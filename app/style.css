@@ -66,15 +66,6 @@ h2 {
   border-radius: 8px;
 }
 
-li {
-  list-style-type: none;
-}
-
-ul {
-  margin: 10px auto;
-  padding-inline-start: 15px;
-}
-
 .list-header {
   background-color: #a2d6f9;
   height: 30px;
@@ -89,6 +80,26 @@ ul {
   margin: 5px auto;
 }
 
+.task {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px 10px;
+}
+
+.content {
+  padding: 3px 0;
+}
+
+.task-text {
+  width: 250px;
+  height: 15px;
+}
+
+.task-text, .task-checkbox {
+  padding: 3px;
+  margin: 0 5px 0 0;
+}
+
 .save-button {
   padding: 0 10px;
   border: solid 0.5px #4d4d4d;
@@ -97,6 +108,10 @@ ul {
   font-size: 100%;
   font-weight: bold;
   vertical-align: baseline;
+}
+
+.actions {
+  padding: 5px 0;
 }
 
 .edit-button {
@@ -112,6 +127,7 @@ ul {
 
 .delete-button {
   padding: 0 10px;
+  margin-left: 3px;
   border: solid 0.5px #4d4d4d;
   border-radius: 10px;
   background: #dc562e;
