@@ -10,7 +10,7 @@
   <body>
     <div class="todo-app">
       <h2>ToDoApp</h2>
-      <!-- 新規タスク入力欄 -->
+      <!-- 新規タスク入力 -->
       <form id="js-form">
         <input
           id="js-form-input"
@@ -19,40 +19,49 @@
           placeholder="追加したいタスクを入力してください"
           autocomplete="on"
         />
-        <input type="submit" value="保存" class="save-button" />
+        <!-- 新規入力タスク保存 -->
+        <input
+          type="submit"
+          id="js-task-submit"
+          value="保存"
+          class="save-button"
+        />
       </form>
 
       <!-- 5. Todoアイテム数の表示 -->
       <div class="todo-count">
-        <div id="js-todo-count-all" class="count-panel">全タスク</div>
-        <div id="js-todo-count-done" class="count-panel">済</div>
-        <div id="js-todo-count-yet" class="count-panel">未完了</div>
+        <div id="js-todo-count-all" class="count-panel">
+          <span>全タスク</span>
+          <a>4</a>
+        </div>
+        <div id="js-todo-count-done" class="count-panel">
+          <span>済</span>
+          <a>2</a>
+        </div>
+        <div id="js-todo-count-yet" class="count-panel">
+          <span>未完了</span>
+          <a>2</a>
+        </div>
       </div>
 
       <!-- 4. TodoアプリのメインとなるTodoリスト -->
       <div id="js-todo-list" class="todo-list">
         <!-- 動的に更新されるTodoリスト -->
-        <div class="list-header"><span>タスク一覧</span></div>
-        <li>
-          <ul>
+        <div class="list-header">
+          <span>タスク一覧</span>
+        </div>
+
+        <div class="each-tasks">
+          <div class="content">
             <input type="checkbox" name="" id="" />
-            <a>タスク1</a>
+            <input type="text" />
+          </div>
+          <div class="actions">
             <button class="edit-button">編集</button>
             <button class="delete-button">削除</button>
-          </ul>
-          <ul>
-            <input type="checkbox" name="" id="" />
-            <a>タスク2</a>
-            <button class="edit-button">編集</button>
-            <button class="delete-button">削除</button>
-          </ul>
-          <ul>
-            <input type="checkbox" name="" id="" />
-            <a>タスク3</a>
-            <button class="edit-button">編集</button>
-            <button class="delete-button">削除</button>
-          </ul>
-        </li>
+          </div>
+
+        </div>
       </div>
     </div>
 
