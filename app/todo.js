@@ -27,6 +27,7 @@ window.addEventListener("load", () => {
     const taskInputElement = document.createElement("input");
     taskInputElement.classList.add("task-text");
     taskInputElement.type = "text";
+    taskInputElement.setAttribute("readonly", "readonly");
     taskInputElement.value = newTask;
 
     // チャックボックスを追加
@@ -58,5 +59,26 @@ window.addEventListener("load", () => {
     taskElement.appendChild(taskActionsElement);
 
     tasks.appendChild(taskElement);
+
+    // タスク保存後、入力欄をクリアにする
+    input.value = "";
+
+    // タスク編集
+    taskEditElement.addEventListener("click", () => {
+      if (taskEditElement.innerText === "編集") {
+        taskInputElement.removeAttribute("readonly");
+        taskInputElement.focus();
+        taskEditElement.innerText = "保存";
+      } else {
+        taskInputElement.setAttribute("readonly", "readonly");
+        taskEditElement.innerText = "編集";
+      }
+    });
+
+    // タスク削除
+    taskDeleteElement.addEventListener("click", () => {
+      alert("このタスクを削除しますか？");
+      tasks.removeChild(taskElement);
+    });
   });
 });
