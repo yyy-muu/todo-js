@@ -13,6 +13,7 @@ window.addEventListener("load", () => {
     // タスク未入力の場合は保存せずアラートを出す
     if (!newTask) {
       alert("タスク内容を入力してください");
+      return false;
     }
 
     // 新規保存したタスクをdiv要素として生成
@@ -59,4 +60,3 @@ window.addEventListener("load", () => {
     tasks.appendChild(taskElement);
   });
 });
-
