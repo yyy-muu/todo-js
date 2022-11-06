@@ -1,7 +1,7 @@
 window.addEventListener("load", () => {
   const form = document.querySelector("#js-form");
   const input = document.querySelector("#js-form-input");
-  const list = document.querySelector("#js-each-tasks");
+  const tasks = document.querySelector("#js-each-tasks");
 
   // 保存ボタンを押すと発火
   form.addEventListener("submit", (e) => {
@@ -56,6 +56,7 @@ window.addEventListener("load", () => {
 
     taskElement.appendChild(taskActionsElement);
 
-    list.appendChild(taskElement);
+    tasks.appendChild(taskElement);
   });
 });
+
