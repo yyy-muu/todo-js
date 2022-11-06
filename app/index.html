@@ -8,63 +8,39 @@
     <link href="../app/style.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="todo-app">
-      <h2>ToDoApp</h2>
-      <!-- 新規タスク入力 -->
-      <form id="js-form">
-        <input
-          id="js-form-input"
-          class="new-todo"
-          type="text"
-          placeholder="追加したいタスクを入力してください"
-          autocomplete="on"
-        />
-        <!-- 新規入力タスク保存 -->
-        <input
-          type="submit"
-          id="js-task-submit"
-          value="保存"
-          class="save-button"
-        />
-      </form>
+    <h2>ToDoApp</h2>
 
-      <!-- 5. Todoアイテム数の表示 -->
-      <div class="todo-count">
-        <div id="js-todo-count-all" class="count-panel">
-          <span>全タスク</span>
-          <a>4</a>
-        </div>
-        <div id="js-todo-count-done" class="count-panel">
-          <span>済</span>
-          <a>2</a>
-        </div>
-        <div id="js-todo-count-yet" class="count-panel">
-          <span>未完了</span>
-          <a>2</a>
-        </div>
+    <form id="inputTaskForm">
+      <input
+        id="inputTask"
+        type="text"
+        placeholder="追加したいタスクを入力してください"
+      />
+
+      <button id="saveButton" type="button" onclick="saveTask('inputTask')">
+        保存する
+      </button>
+    </form>
+
+    <div class="todo-count">
+      <div class="count-panel">
+        <span>全タスク</span>
+        <a id="countAll">0</a>
       </div>
-
-      <!-- 4. TodoアプリのメインとなるTodoリスト -->
-      <div id="js-todo-list" class="todo-list">
-        <!-- 動的に更新されるTodoリスト -->
-        <div class="list-header">
-          <span>タスク一覧</span>
-        </div>
-
-        <div id="js-each-tasks" class="each-tasks">
-          <!-- <div class="task">
-            <div class="content">
-              <input class="task-checkbox" type="checkbox" />
-              <input class="task-text" type="text" readonly />
-            </div>
-            <div class="actions">
-              <button class="edit-button">編集</button>
-              <button class="delete-button">削除</button>
-            </div>
-          </div> -->
-        </div>
+      <div class="count-panel">
+        <span>済</span>
+        <a id="countDone">0</a>
+      </div>
+      <div class="count-panel">
+        <span>未完了</span>
+        <a id="countNotYet">0</a>
       </div>
     </div>
+    <div class="list-header">
+      <span>タスク一覧</span>
+    </div>
+
+    <form id="taskList"></form>
 
     <script src="../app/todo.js"></script>
   </body>
