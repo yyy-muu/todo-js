@@ -238,5 +238,3 @@ function deleteTask(event) {
     return;
   }
 }
-
-taskStatusCheck();
