@@ -19,7 +19,13 @@ h2 {
   background-color: #fdd85d;
 }
 
-#inputTask {
+ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+#inputTaskContent,
+#editTaskForm {
   margin: 10px 0;
   width: 100%;
   font-size: 17px;
@@ -28,35 +34,33 @@ h2 {
   padding: 3px;
   border: solid 0.5px #4d4d4d;
   border-radius: 5px;
-  text-align: center;
+  text-align: left;
 }
 
-.todo-count {
+#editTaskForm {
+  height: 20px;
+  width: 70%;
+  margin: 0;
+  font-size: 13px;
+}
+
+#taskStatusPanel {
   display: flex;
+  justify-content: center;
 }
 
-.count-panel {
+.task-status-panel li {
   margin: 15px 5px 5px 0;
+  padding: 5px 0;
   width: 100%;
-  height: 70px;
+  height: auto;
   border: solid 0.5px #4d4d4d;
   border-radius: 5px;
   text-align: center;
   font-weight: bold;
   background-color: #fff;
-}
-
-.count-panel span {
-  display: block;
-  margin-top: 5px;
-}
-
-.count-panel a {
-  display: block;
-  font-size: 30px;
-  font-weight: bold;
-  padding: 10px;
-  margin-bottom: 5px;
+  list-style: none;
+  font-size: 18px;
 }
 
 .task-list-panel {
@@ -68,33 +72,35 @@ h2 {
   border-radius: 8px;
 }
 
-.list-header {
+.task-list-header {
   background-color: #a2d6f9;
-  height: 30px;
+  height: 40px;
   font-size: 17px;
   text-align: center;
   border-radius: 8px;
 }
 
-.list-header span {
+.task-list-header h3 {
   font-weight: bold;
   display: inline-block;
-  margin: 5px auto;
+  margin: 10px auto;
 }
 
-#eachTask {
+#taskList {
+  padding: 0 10px;
+}
+
+.each-task {
   display: flex;
   justify-content: flex-start;
-  margin: 2px auto;
-  background-color: #fff;
-  border-bottom: dotted 0.5px #4d4d4d;
-  padding: 5px;
+  margin: 5px auto;
+  padding: 0 0 3px 0;
+  border-bottom: 0.5px dotted #a2d6f9;
 }
 
-label {
-  position: relative;
-  font-size: 15px;
-  padding: 3px;
+#taskContent {
+  list-style-type: none;
+  width: 70%;
 }
 
 input[type="text"]:focus {
@@ -102,16 +108,9 @@ input[type="text"]:focus {
   border-radius: 3px;
 }
 
-#inputTaskForm button {
+#saveButton {
   display: block;
   margin: 0 auto 10px auto;
-}
-
-#editTask {
-  width: 80%;
-}
-
-#saveButton {
   padding: 0 10px;
   border: solid 0.5px #4d4d4d;
   border-radius: 10px;
@@ -120,9 +119,10 @@ input[type="text"]:focus {
   font-weight: bold;
 }
 
-#editButton {
+#editButton,
+#editSaveButton {
   padding: 0 10px;
-  margin-left: auto;
+  margin-left: 3px;
   border: solid 0.5px #4d4d4d;
   border-radius: 10px;
   background: #1e96fc;
@@ -131,6 +131,7 @@ input[type="text"]:focus {
   font-weight: bold;
 }
 
+#backButton,
 #deleteButton {
   padding: 0 10px;
   margin-left: 3px;

@@ -10,38 +10,23 @@
   <body>
     <h2>ToDoApp</h2>
 
-    <form id="inputTaskForm">
-      <input
-        id="inputTask"
-        type="text"
-        placeholder="追加したいタスクを入力してください"
-      />
+    <input
+      id="inputTaskContent"
+      type="text"
+      placeholder="追加したいタスクを入力してください"
+    />
 
-      <button id="saveButton" type="button" onclick="saveTask('inputTask')">
-        保存する
-      </button>
-    </form>
+    <button id="saveButton" type="button">保存する</button>
 
-    <div class="todo-count">
-      <div class="count-panel">
-        <span>全タスク</span>
-        <a id="countAll">0</a>
-      </div>
-      <div class="count-panel">
-        <span>済</span>
-        <a id="countDone">0</a>
-      </div>
-      <div class="count-panel">
-        <span>未完了</span>
-        <a id="countNotYet">0</a>
-      </div>
+    <div class="task-status">
+      <ul class="task-status-panel" id="taskStatusPanel"></ul>
     </div>
 
     <div class="task-list-panel">
-      <div class="list-header">
-        <span>タスク一覧</span>
-        <form id="taskList"></form>
+      <div class="task-list-header">
+        <h3>タスク一覧</h3>
       </div>
+      <ul class="task-list" id="taskList"></ul>
     </div>
 
     <script src="../app/todo.js"></script>
