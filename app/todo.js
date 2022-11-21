@@ -1,6 +1,15 @@
 let id = 0; // タスク管理用ID(初期値0)
 let tasksStore = []; // 各タスク格納用配列
 
+// タスクステータス管理用配列
+const taskStatuses = [
+  { label: "全タスク", count: "" },
+  { label: "済", count: 0 },
+  { label: "未完了", count: 0 },
+];
+
+taskStatuses[0].count = taskStatuses[1].count + taskStatuses[2].count;
+
 const inputTaskContent = document.getElementById("inputTaskContent");
 const saveButton = document.getElementById("saveButton");
 const taskList = document.getElementById("taskList");
@@ -29,13 +38,6 @@ const createTask = () => {
     updateTaskList();
   }
 };
-
-// タスクステータス管理用配列
-const taskStatuses = [
-  { label: "全タスク", count: 0 },
-  { label: "済", count: 0 },
-  { label: "未完了", count: 0 },
-];
 
 // タスク一覧の更新
 const updateTaskList = () => {
@@ -121,7 +123,7 @@ const updateTask = (id) => {
 
   const editTaskForm = document.createElement("input");
   editTaskForm.setAttribute("id", "editTaskForm");
-
+  editTaskForm.value = currentTaskContent.taskValue;
   const editTargetTask = eachTaskElement.children[1];
 
   editButton = eachTaskElement.children[2];
@@ -188,6 +190,10 @@ const deleteTask = (id) => {
 
     const eachTask = document.getElementById(`eachTask${id}`);
     eachTask.remove();
+
+    tasksStore = tasksStore.filter((targetTask) => {
+      return targetTask.id !== id; // 削除タスク以外を返す
+    });
 
     taskStatuses[0].count--; // 全タスクから減算
     if (currentTaskContent.isChecked) {
