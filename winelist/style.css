@@ -1,0 +1,30 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 23px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+  background-color: #fffdf7;
+  color: #4d4d4d;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #720026;
+  color: #fffdf7;
+  font-size: 30px;
+  height: 60px;
+  text-align: center;
+}
+
+h2 {
+  padding: 17px;
+  margin: 0 auto;
+}
+
+.selectors {
+  padding: 10px ;
+}
