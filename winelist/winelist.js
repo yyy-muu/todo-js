@@ -1,16 +1,10 @@
-const wineLists = document.getElementById("wineLists");
-
 const redsBtn = document.getElementById("reds");
 const whitesBtn = document.getElementById("whites");
 const sparklingBtn = document.getElementById("sparkling");
 const dessertBtn = document.getElementById("dessert");
 const portBtn = document.getElementById("port");
 
-let redsData = [];
-let whitesData = [];
-let sparklingData = [];
-let dessertData = [];
-let portData = [];
+// let eachData = {};
 
 const redsURL = "https://api.sampleapis.com/wines/reds";
 const whitesURL = "https://api.sampleapis.com/wines/whites";
@@ -18,10 +12,9 @@ const sparklingURL = "https://api.sampleapis.com/wines/sparkling";
 const dessertURL = "https://api.sampleapis.com/wines/dessert";
 const portURL = "https://api.sampleapis.com/wines/port";
 
-// デフォルトで赤ワイン選択状態
-onload = () => {
-  redsBtn.click();
-};
+// onload = () => {
+//   document.getElementById("reds").click();
+// };
 
 // 読み込み中マーク描画
 const renderLoader = () => {
@@ -35,43 +28,56 @@ const removeLoader = () => {
   document.body.removeChild(loader);
 };
 
-// 赤ワインAPI呼び出し
 const fetchReds = async () => {
   renderLoader();
   const resReds = await fetch(redsURL);
-  redsData = await resReds.json(); // APIレスポンスがあるまでJSONメソッドを実行しない
-  renderRedList();
+  let redsData = await resReds.json(); // APIレスポンスがあるまでJSONメソッドを実行しない
+  renderWineList(redsData);
   removeLoader();
 };
 
 const fetchWhites = async () => {
-  // await renderLoader();
+  renderLoader();
   const resWhites = await fetch(whitesURL);
-  whitesData = await resWhites.json(); // APIレスポンスがあるまでJSONメソッドを実行しない
-  renderRedList();
+  let whitesData = await resWhites.json();
+  renderWineList(whitesData);
+  removeLoader();
 };
 
-const fetchSparkling = async () => {
-  // renderLoader();
-  const resSparkling = await fetch(sparklingURL);
-  sparklingData = await resSparkling.json(); // APIレスポンスがあるまでJSONメソッドを実行しない
-  renderRedList();
-};
-const fetchDessert = async () => {
-  // renderLoader();
-  const resDessert = await fetch(dessertURL);
-  dessertData = await resDessert.json(); // APIレスポンスがあるまでJSONメソッドを実行しない
-  renderRedList();
-};
-const fetchPort = async () => {
-  // renderLoader();
-  const resPort = await fetch(portURL);
-  portData = await resPort.json(); // APIレスポンスがあるまでJSONメソッドを実行しない
-  renderRedList();
-};
+// const fetchSparkling = async () => {
+//   renderLoader();
+//   const resSparkling = await fetch(sparklingURL);
+//   let sparklingData = await resSparkling.json();
+//   renderWineList(sparklingData);
+//   removeLoader();
+// };
+
+// const fetchDessert = async () => {
+//   renderLoader();
+//   const resDessert = await fetch(dessertURL);
+//   let dessertData = await resDessert.json();
+//   renderWineList(dessertData);
+//   removeLoader();
+// };
+
+// const fetchPort = async () => {
+//   renderLoader();
+//   const resPort = await fetch(portURL);
+//   let portData = await resPort.json();
+//   renderWineList(portData);
+//   removeLoader();
+// };
+
 // 赤ワインリスト作成
-const renderRedList = () => {
-  for (let i = 0; i < redsData.length; i++) {
+const renderWineList = (eachData) => {
+  const currentList = document.getElementById("wineLists");
+  console.log(currentList);
+
+  currentList(currentList);
+
+  let wineLists = document.createElement("div");
+
+  for (let i = 0; i < eachData.length; i++) {
     const eachWine = document.createElement("div");
     const wineName = document.createElement("h4");
     const winery = document.createElement("li");
@@ -80,7 +86,8 @@ const renderRedList = () => {
     const reviews = document.createElement("li");
     const image = document.createElement("img");
 
-    let rating = Math.floor(redsData[i].rating.average);
+    // 5段階評価星
+    let rating = Math.floor(eachData[i].rating.average);
     if (rating === 1) {
       ratingAverage = "★";
     } else if (rating === 2) {
@@ -93,13 +100,13 @@ const renderRedList = () => {
       ratingAverage = "★★★★★";
     }
 
-    eachWine.classList.add("each-wine");
-    wineName.textContent = redsData[i].wine;
-    winery.textContent = "ワイナリー : " + redsData[i].winery;
-    location.textContent = "生産地 : " + redsData[i].location;
+    eachWine.id = "eachWine";
+    wineName.textContent = eachData[i].wine;
+    winery.textContent = "ワイナリー : " + eachData[i].winery;
+    location.textContent = "生産地 : " + eachData[i].location;
     rateStars.textContent = ratingAverage;
-    reviews.textContent = redsData[i].rating.reviews;
-    image.src = redsData[i].image;
+    reviews.textContent = eachData[i].rating.reviews;
+    image.src = eachData[i].image;
 
     eachWine.appendChild(image);
     eachWine.appendChild(wineName);
@@ -107,12 +114,14 @@ const renderRedList = () => {
     eachWine.appendChild(location);
     eachWine.appendChild(rateStars);
     eachWine.appendChild(reviews);
+
     wineLists.appendChild(eachWine);
   }
 };
 
+// 各ワインリスト呼び出し
 redsBtn.addEventListener("click", fetchReds);
 whitesBtn.addEventListener("click", fetchWhites);
-sparklingBtn.addEventListener("click", fetchSparkling);
-dessertBtn.addEventListener("click", fetchDessert);
-portBtn.addEventListener("click", fetchPort);
+// sparklingBtn.addEventListener("click", fetchSparkling);
+// dessertBtn.addEventListener("click", fetchDessert);
+// portBtn.addEventListener("click", fetchPort);

@@ -38,7 +38,7 @@ img {
   height: 300px;
 }
 
-.each-wine {
+#eachWine {
   padding: 15px;
   border-bottom: solid 1px #d00b4d;
   height: auto;
