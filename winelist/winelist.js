@@ -4,17 +4,11 @@ const sparklingBtn = document.getElementById("sparkling");
 const dessertBtn = document.getElementById("dessert");
 const portBtn = document.getElementById("port");
 
-// let eachData = {};
-
 const redsURL = "https://api.sampleapis.com/wines/reds";
 const whitesURL = "https://api.sampleapis.com/wines/whites";
 const sparklingURL = "https://api.sampleapis.com/wines/sparkling";
 const dessertURL = "https://api.sampleapis.com/wines/dessert";
 const portURL = "https://api.sampleapis.com/wines/port";
-
-// onload = () => {
-//   document.getElementById("reds").click();
-// };
 
 // 読み込み中マーク描画
 const renderLoader = () => {
@@ -31,7 +25,7 @@ const removeLoader = () => {
 const fetchReds = async () => {
   renderLoader();
   const resReds = await fetch(redsURL);
-  let redsData = await resReds.json(); // APIレスポンスがあるまでJSONメソッドを実行しない
+  let redsData = await resReds.json();
   renderWineList(redsData);
   removeLoader();
 };
@@ -44,38 +38,37 @@ const fetchWhites = async () => {
   removeLoader();
 };
 
-// const fetchSparkling = async () => {
-//   renderLoader();
-//   const resSparkling = await fetch(sparklingURL);
-//   let sparklingData = await resSparkling.json();
-//   renderWineList(sparklingData);
-//   removeLoader();
-// };
+const fetchSparkling = async () => {
+  renderLoader();
+  const resSparkling = await fetch(sparklingURL);
+  let sparklingData = await resSparkling.json();
+  renderWineList(sparklingData);
+  removeLoader();
+};
 
-// const fetchDessert = async () => {
-//   renderLoader();
-//   const resDessert = await fetch(dessertURL);
-//   let dessertData = await resDessert.json();
-//   renderWineList(dessertData);
-//   removeLoader();
-// };
+const fetchDessert = async () => {
+  renderLoader();
+  const resDessert = await fetch(dessertURL);
+  let dessertData = await resDessert.json();
+  renderWineList(dessertData);
+  removeLoader();
+};
 
-// const fetchPort = async () => {
-//   renderLoader();
-//   const resPort = await fetch(portURL);
-//   let portData = await resPort.json();
-//   renderWineList(portData);
-//   removeLoader();
-// };
+const fetchPort = async () => {
+  renderLoader();
+  const resPort = await fetch(portURL);
+  let portData = await resPort.json();
+  renderWineList(portData);
+  removeLoader();
+};
 
-// 赤ワインリスト作成
+// 各ワインリスト描画
 const renderWineList = (eachData) => {
-  const currentList = document.getElementById("wineLists");
-  console.log(currentList);
-
-  currentList(currentList);
-
-  let wineLists = document.createElement("div");
+  const currentLists = document.getElementById("wineLists");
+  const newLists = document.createElement("div");
+  newLists.id = "wineLists";
+  const parentDiv = currentLists.parentNode;
+  parentDiv.replaceChild(newLists, currentLists); //既存リスト置換
 
   for (let i = 0; i < eachData.length; i++) {
     const eachWine = document.createElement("div");
@@ -114,14 +107,18 @@ const renderWineList = (eachData) => {
     eachWine.appendChild(location);
     eachWine.appendChild(rateStars);
     eachWine.appendChild(reviews);
-
-    wineLists.appendChild(eachWine);
+    newLists.appendChild(eachWine);
   }
 };
+
+// TODO: 画像がない場合の処理
+
+// デフォルトで赤ワインリスト呼び出し
+window.onload = fetchReds();
 
 // 各ワインリスト呼び出し
 redsBtn.addEventListener("click", fetchReds);
 whitesBtn.addEventListener("click", fetchWhites);
-// sparklingBtn.addEventListener("click", fetchSparkling);
-// dessertBtn.addEventListener("click", fetchDessert);
-// portBtn.addEventListener("click", fetchPort);
+sparklingBtn.addEventListener("click", fetchSparkling);
+dessertBtn.addEventListener("click", fetchDessert);
+portBtn.addEventListener("click", fetchPort);
