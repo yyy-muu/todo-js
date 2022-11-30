@@ -100,6 +100,7 @@ const renderWineList = (eachData) => {
     rateStars.textContent = ratingAverage;
     reviews.textContent = eachData[i].rating.reviews;
     image.src = eachData[i].image;
+    image.alt = "No Wine Image";
 
     eachWine.appendChild(image);
     eachWine.appendChild(wineName);
@@ -110,8 +111,6 @@ const renderWineList = (eachData) => {
     newLists.appendChild(eachWine);
   }
 };
-
-// TODO: 画像がない場合の処理
 
 // デフォルトで赤ワインリスト呼び出し
 window.onload = fetchReds();
