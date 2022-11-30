@@ -4,12 +4,6 @@ const sparklingBtn = document.getElementById("sparkling");
 const dessertBtn = document.getElementById("dessert");
 const portBtn = document.getElementById("port");
 
-const redsURL = "https://api.sampleapis.com/wines/reds";
-const whitesURL = "https://api.sampleapis.com/wines/whites";
-const sparklingURL = "https://api.sampleapis.com/wines/sparkling";
-const dessertURL = "https://api.sampleapis.com/wines/dessert";
-const portURL = "https://api.sampleapis.com/wines/port";
-
 // 読み込み中マーク描画
 const renderLoader = () => {
   const loader = document.createElement("div");
@@ -22,43 +16,11 @@ const removeLoader = () => {
   document.body.removeChild(loader);
 };
 
-const fetchReds = async () => {
+const fetchWines = async (kind) => {
   renderLoader();
-  const resReds = await fetch(redsURL);
-  let redsData = await resReds.json();
-  renderWineList(redsData);
-  removeLoader();
-};
-
-const fetchWhites = async () => {
-  renderLoader();
-  const resWhites = await fetch(whitesURL);
-  let whitesData = await resWhites.json();
-  renderWineList(whitesData);
-  removeLoader();
-};
-
-const fetchSparkling = async () => {
-  renderLoader();
-  const resSparkling = await fetch(sparklingURL);
-  let sparklingData = await resSparkling.json();
-  renderWineList(sparklingData);
-  removeLoader();
-};
-
-const fetchDessert = async () => {
-  renderLoader();
-  const resDessert = await fetch(dessertURL);
-  let dessertData = await resDessert.json();
-  renderWineList(dessertData);
-  removeLoader();
-};
-
-const fetchPort = async () => {
-  renderLoader();
-  const resPort = await fetch(portURL);
-  let portData = await resPort.json();
-  renderWineList(portData);
+  const wines = await fetch(`https://api.sampleapis.com/wines/${kind}`);
+  const data = await wines.json();
+  renderWineList(data);
   removeLoader();
 };
 
@@ -113,11 +75,11 @@ const renderWineList = (eachData) => {
 };
 
 // デフォルトで赤ワインリスト呼び出し
-window.onload = fetchReds();
+window.onload = fetchWines("reds");
 
 // 各ワインリスト呼び出し
-redsBtn.addEventListener("click", fetchReds);
-whitesBtn.addEventListener("click", fetchWhites);
-sparklingBtn.addEventListener("click", fetchSparkling);
-dessertBtn.addEventListener("click", fetchDessert);
-portBtn.addEventListener("click", fetchPort);
+redsBtn.addEventListener("click", fetchWines("reds"));
+whitesBtn.addEventListener("click", fetchWines("whites"));
+sparklingBtn.addEventListener("click", fetchWines("sparkling"));
+dessertBtn.addEventListener("click", fetchWines("dessert"));
+portBtn.addEventListener("click", fetchWines("port"));
