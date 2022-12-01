@@ -8,12 +8,14 @@ const portBtn = document.getElementById("port");
 const renderLoader = () => {
   const loader = document.createElement("div");
   loader.id = "loader";
-  document.body.appendChild(loader);
+  const parentDiv = document.getElementById("selectors");
+  parentDiv.appendChild(loader);
 };
 
 const removeLoader = () => {
   const loader = document.getElementById("loader");
-  document.body.removeChild(loader);
+  const parentDiv = document.getElementById("selectors");
+  parentDiv.removeChild(loader);
 };
 
 const fetchWines = async (kind) => {
