@@ -74,12 +74,32 @@ const renderWineList = (eachData) => {
   }
 };
 
-// デフォルトで赤ワインリスト呼び出し
-window.onload = fetchWines("reds");
+const getWineLists = () => {
+  const redsBtnState = document.getElementById("reds");
+  const whitesBtnState = document.getElementById("whites");
+  const sparklingBtnState = document.getElementById("sparkling");
+  const dessertBtnState = document.getElementById("dessert");
+  const portBtnState = document.getElementById("port");
+
+  if (redsBtnState.checked) {
+    fetchWines(redsBtnState.id);
+  } else if (whitesBtnState.checked) {
+    fetchWines(whitesBtnState.id);
+  } else if (sparklingBtnState.checked) {
+    fetchWines(sparklingBtnState.id);
+  } else if (dessertBtnState.checked) {
+    fetchWines(dessertBtnState.id);
+  } else {
+    fetchWines(portBtnState.id);
+  }
+};
 
 // 各ワインリスト呼び出し
-redsBtn.addEventListener("click", fetchWines("reds"));
-whitesBtn.addEventListener("click", fetchWines("whites"));
-sparklingBtn.addEventListener("click", fetchWines("sparkling"));
-dessertBtn.addEventListener("click", fetchWines("dessert"));
-portBtn.addEventListener("click", fetchWines("port"));
+redsBtn.addEventListener("click", getWineLists);
+whitesBtn.addEventListener("click", getWineLists);
+sparklingBtn.addEventListener("click", getWineLists);
+dessertBtn.addEventListener("click", getWineLists);
+portBtn.addEventListener("click", getWineLists);
+
+// デフォルトで赤ワインリスト呼び出し
+window.onload = getWineLists;
