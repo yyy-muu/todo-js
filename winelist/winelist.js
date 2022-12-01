@@ -77,22 +77,16 @@ const renderWineList = (eachData) => {
 };
 
 const getWineLists = () => {
-  const redsBtnState = document.getElementById("reds");
-  const whitesBtnState = document.getElementById("whites");
-  const sparklingBtnState = document.getElementById("sparkling");
-  const dessertBtnState = document.getElementById("dessert");
-  const portBtnState = document.getElementById("port");
-
-  if (redsBtnState.checked) {
-    fetchWines(redsBtnState.id);
-  } else if (whitesBtnState.checked) {
-    fetchWines(whitesBtnState.id);
-  } else if (sparklingBtnState.checked) {
-    fetchWines(sparklingBtnState.id);
-  } else if (dessertBtnState.checked) {
-    fetchWines(dessertBtnState.id);
+  if (redsBtn.checked) {
+    fetchWines(redsBtn.id);
+  } else if (whitesBtn.checked) {
+    fetchWines(whitesBtn.id);
+  } else if (sparklingBtn.checked) {
+    fetchWines(sparklingBtn.id);
+  } else if (dessertBtn.checked) {
+    fetchWines(dessertBtn.id);
   } else {
-    fetchWines(portBtnState.id);
+    fetchWines(portBtn.id);
   }
 };
 
