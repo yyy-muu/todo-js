@@ -1,0 +1,76 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 23px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+  background-color: #fffdf7;
+  color: #4d4d4d;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #720026;
+  color: #fffdf7;
+  font-size: 30px;
+  height: 60px;
+  text-align: center;
+}
+
+h2 {
+  padding: 17px;
+  margin: 0 auto;
+}
+
+h4 {
+  margin: 0;
+  color: #770229;
+}
+
+li {
+  font-size: 18px;
+}
+
+img {
+  height: 300px;
+}
+
+#eachWine {
+  padding: 15px;
+  border-bottom: solid 1px #d00b4d;
+  height: auto;
+}
+
+#wineLists {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+  margin: 30px;
+}
+
+#selectors {
+  padding: 10px;
+}
+
+#loader {
+  border: 10px solid #7200261e;
+  border-radius: 50%;
+  border-top: 12px solid #720026;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
