@@ -1,9 +1,3 @@
-const redsBtn = document.getElementById("reds");
-const whitesBtn = document.getElementById("whites");
-const sparklingBtn = document.getElementById("sparkling");
-const dessertBtn = document.getElementById("dessert");
-const portBtn = document.getElementById("port");
-
 // 読み込み中マーク描画
 const renderLoader = () => {
   const loader = document.createElement("div");
@@ -76,26 +70,5 @@ const renderWineList = (eachData) => {
   }
 };
 
-const getWineLists = () => {
-  if (redsBtn.checked) {
-    fetchWines(redsBtn.id);
-  } else if (whitesBtn.checked) {
-    fetchWines(whitesBtn.id);
-  } else if (sparklingBtn.checked) {
-    fetchWines(sparklingBtn.id);
-  } else if (dessertBtn.checked) {
-    fetchWines(dessertBtn.id);
-  } else {
-    fetchWines(portBtn.id);
-  }
-};
-
-// 各ワインリスト呼び出し
-redsBtn.addEventListener("click", getWineLists);
-whitesBtn.addEventListener("click", getWineLists);
-sparklingBtn.addEventListener("click", getWineLists);
-dessertBtn.addEventListener("click", getWineLists);
-portBtn.addEventListener("click", getWineLists);
-
-// デフォルトで赤ワインリスト呼び出し
-window.onload = getWineLists;
+// デフォルトで赤ワインリスト呼び出し;
+window.onload = fetchWines("reds");

@@ -10,16 +10,37 @@
   <body>
     <div class="header"><h2>Wine List</h2></div>
     <div id="selectors">
-      <input name="wines" value="Reds" id="reds" type="radio" checked />Reds
-      <input name="wines" value="Whites" id="whites" type="radio" />Whites
+      <input
+        name="wines"
+        value="Reds"
+        type="radio"
+        onclick="fetchWines('reds')"
+        checked
+      />Reds
+      <input
+        name="wines"
+        value="Whites"
+        type="radio"
+        onclick="fetchWines('whites')"
+      />Whites
       <input
         name="wines"
         value="Sparkling"
-        id="sparkling"
         type="radio"
+        onclick="fetchWines('sparkling')"
       />Sparkling
-      <input name="wines" value="Dessert" id="dessert" type="radio" />Dessert
-      <input name="wines" value="Port" id="port" type="radio" />Port
+      <input
+        name="wines"
+        value="Dessert"
+        type="radio"
+        onclick="fetchWines('dessert')"
+      />Dessert
+      <input
+        name="wines"
+        value="Port"
+        type="radio"
+        onclick="fetchWines('port')"
+      />Port
     </div>
 
     <div id="wineLists"></div>
