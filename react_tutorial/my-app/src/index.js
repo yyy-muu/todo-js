@@ -19,28 +19,24 @@ class Board extends React.Component {
       <Square
         value={this.props.squares[i]}
         onClick={() => this.props.onClick(i)} //マス目クリックで、Square側で関数呼び出しさせる
+        key={i} // マスをループにし、キーを持たせる
       />
     );
   }
 
   render() {
+    const cols = [0, 1, 2];
+    const rows = [0, 1, 2];
     return (
       <div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
+        {rows.map((row) => {
+          return (
+            // マスをループにし、キーを持たせる
+            <div className="board-row" key={row}>
+              {cols.map((col) => this.renderSquare(row * 3 + col))}
+            </div>
+          );
+        })}
       </div>
     );
   }
@@ -103,7 +99,8 @@ class Game extends React.Component {
       const desc = move
         ? `Go to move #${move}（col: ${step.col}, row: ${step.row}）` // 座標位置
         : "GO to Game Start";
-      return ( // 現行番手とリストのステップが同じなら太字
+      return (
+        // 現行番手とリストのステップが同じなら太字
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>
             {move === this.state.stepNumber ? <b>{desc}</b> : desc}
