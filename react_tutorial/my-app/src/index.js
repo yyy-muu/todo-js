@@ -76,7 +76,7 @@ class Game extends React.Component {
         {
           squares: squares,
           col: (i % 3) + 1, // 添字の分 +1
-          row: Math.trunc(i / 3) + 1
+          row: Math.trunc(i / 3) + 1,
         },
       ]),
       stepNumber: history.length, // state初期値
@@ -100,16 +100,16 @@ class Game extends React.Component {
     const moves = history.map((step, move) => {
       // console.log(step);
       // console.log(move);
-      const desc = move ?
-      `Go to move #${move}（col: ${step.col}, row: ${step.row}）`: // 座標位置
-      "GO to Game Start";
-      return (
+      const desc = move
+        ? `Go to move #${move}（col: ${step.col}, row: ${step.row}）` // 座標位置
+        : "GO to Game Start";
+      return ( // 現行番手とリストのステップが同じなら太字
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button onClick={() => this.jumpTo(move)}>
+            {move === this.state.stepNumber ? <b>{desc}</b> : desc}
+          </button>
         </li>
       );
-
-
     });
 
     let status;
