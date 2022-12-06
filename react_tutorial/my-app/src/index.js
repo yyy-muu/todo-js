@@ -53,6 +53,7 @@ class Game extends React.Component {
       ],
       stepNumber: 0,
       xIsNext: true, // 手番を真偽値で反転させ、ゲーム進行状態を保存
+      orderIsAsc: true,
     };
   }
 
@@ -77,6 +78,13 @@ class Game extends React.Component {
       ]),
       stepNumber: history.length, // state初期値
       xIsNext: !this.state.xIsNext,
+    });
+  }
+
+  // 番手の順序を並び替える(orderIsAscを反転させる)
+  handleOrder() {
+    this.setState({
+      orderIsAsc: !this.state.orderIsAsc,
     });
   }
 
@@ -116,6 +124,8 @@ class Game extends React.Component {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
 
+    const order = this.state.orderIsAsc ? "降順" : "昇順";
+
     return (
       <div className="game">
         <div className="game-board">
@@ -126,7 +136,8 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <ol>{this.state.orderIsAsc ? moves : moves.reverse()}</ol>
+          <button onClick={() => this.handleOrder()}>{order}</button>
         </div>
       </div>
     );
